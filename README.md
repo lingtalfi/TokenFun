@@ -74,7 +74,7 @@ a(TokenFinderTool::getUseDependenciesByFolder($dir));
 
 The result of the above example would look like this:
 
-```
+```php
 array (size=1)
   0 => string 'CopyDir\AuthorCopyDirUtil' (length=25)
 
