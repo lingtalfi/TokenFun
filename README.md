@@ -72,6 +72,26 @@ a(TokenFinderTool::getUseDependenciesByFolder($dir));
 ```
 
 
+The result of the above example would look like this:
+
+```
+array (size=1)
+  0 => string 'CopyDir\AuthorCopyDirUtil' (length=25)
+
+array (size=9)
+  0 => string 'Bat\CaseTool' (length=12)
+  1 => string 'Bat\FileSystemTool' (length=18)
+  2 => string 'Bat\StringTool' (length=14)
+  3 => string 'Bat\ValidationTool' (length=18)
+  4 => string 'CopyDir\AuthorCopyDirUtil' (length=25)
+  5 => string 'PhpBeast\AuthorTestAggregator' (length=29)
+  6 => string 'PhpBeast\PrettyTestInterpreter' (length=30)
+  7 => string 'PhpBeast\Tool\ComparisonErrorTableTool' (length=38)
+  8 => string 'Tiphaine\TiphaineTool' (length=21)
+
+```
+
+
 
 Some methods of the TokenFinderTool include the following.
 
