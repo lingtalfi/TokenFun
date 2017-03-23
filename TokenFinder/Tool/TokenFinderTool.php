@@ -102,9 +102,10 @@ class TokenFinderTool
 
 
                 if (false !== ($namespace = self::getNamespace($tokens))) {
-                    $ret = $namespace . '\\' . $ret;
+                    $ret = $namespace . '\\' . ltrim($ret, '\\');
                 }
             }
+
             return $ret;
         } else {
             return false;
