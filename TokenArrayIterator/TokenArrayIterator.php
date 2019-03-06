@@ -1,10 +1,10 @@
 <?php
 
 
-namespace TokenFun\TokenArrayIterator;
+namespace Ling\TokenFun\TokenArrayIterator;
 
 
-use TokenFun\Tool\TokenTool;
+use Ling\TokenFun\Tool\TokenTool;
 
 
 

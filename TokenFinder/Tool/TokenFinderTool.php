@@ -1,19 +1,19 @@
 <?php
 
 
-namespace TokenFun\TokenFinder\Tool;
+namespace Ling\TokenFun\TokenFinder\Tool;
 
-use Bat\FileSystemTool;
-use DirScanner\DirScanner;
-use TokenFun\TokenArrayIterator\TokenArrayIterator;
-use TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
-use TokenFun\TokenFinder\ClassNameTokenFinder;
-use TokenFun\TokenFinder\InterfaceTokenFinder;
-use TokenFun\TokenFinder\MethodTokenFinder;
-use TokenFun\TokenFinder\NamespaceTokenFinder;
-use TokenFun\TokenFinder\ParentClassNameTokenFinder;
-use TokenFun\TokenFinder\UseStatementsTokenFinder;
-use TokenFun\Tool\TokenTool;
+use Ling\Bat\FileSystemTool;
+use Ling\DirScanner\DirScanner;
+use Ling\TokenFun\TokenArrayIterator\TokenArrayIterator;
+use Ling\TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
+use Ling\TokenFun\TokenFinder\ClassNameTokenFinder;
+use Ling\TokenFun\TokenFinder\InterfaceTokenFinder;
+use Ling\TokenFun\TokenFinder\MethodTokenFinder;
+use Ling\TokenFun\TokenFinder\NamespaceTokenFinder;
+use Ling\TokenFun\TokenFinder\ParentClassNameTokenFinder;
+use Ling\TokenFun\TokenFinder\UseStatementsTokenFinder;
+use Ling\TokenFun\Tool\TokenTool;
 
 
 /**

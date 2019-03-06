@@ -1,9 +1,9 @@
 <?php
 
 
-namespace TokenFun\TokenFinder;
+namespace Ling\TokenFun\TokenFinder;
 
-use TokenFun\TokenArrayIterator\TokenArrayIteratorInterface;
+use Ling\TokenFun\TokenArrayIterator\TokenArrayIteratorInterface;
 
 /**
  * RecursiveTokenFinder

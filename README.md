@@ -16,7 +16,7 @@ Install
 ==========
 Using the [uni](https://github.com/lingtalfi/universe-naive-importer) command.
 ```bash
-uni import TokenFun
+uni import Ling/TokenFun
 ```
 
 
@@ -59,7 +59,7 @@ Example:
 <?php
 
 
-use TokenFun\TokenFinder\Tool\TokenFinderTool;
+use Ling\TokenFun\TokenFinder\Tool\TokenFinderTool;
 
 require_once "bigbang.php";
 

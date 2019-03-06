@@ -1,7 +1,7 @@
 <?php
 
 
-namespace TokenFun\TokenFinder;
+namespace Ling\TokenFun\TokenFinder;
 
 /**
  * TokenFinderInterface

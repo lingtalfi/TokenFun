@@ -1,7 +1,7 @@
 <?php
 
-namespace TokenFun\Tool;
-use TokenFun\TokenArrayIterator\TokenArrayIterator;
+namespace Ling\TokenFun\Tool;
+use Ling\TokenFun\TokenArrayIterator\TokenArrayIterator;
 
 
 /**

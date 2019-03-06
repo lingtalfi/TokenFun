@@ -1,10 +1,10 @@
 <?php
 
-namespace TokenFun\TokenFinder;
+namespace Ling\TokenFun\TokenFinder;
 
-use TokenFun\TokenArrayIterator\TokenArrayIterator;
-use TokenFun\Tool\TokenTool;
-use TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
+use Ling\TokenFun\TokenArrayIterator\TokenArrayIterator;
+use Ling\TokenFun\Tool\TokenTool;
+use Ling\TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
 
 /**
  * VariableAssignmentTokenFinder

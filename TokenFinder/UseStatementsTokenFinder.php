@@ -1,10 +1,10 @@
 <?php
 
-namespace TokenFun\TokenFinder;
+namespace Ling\TokenFun\TokenFinder;
 
-use TokenFun\TokenArrayIterator\TokenArrayIterator;
-use TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
-use TokenFun\Tool\TokenTool;
+use Ling\TokenFun\TokenArrayIterator\TokenArrayIterator;
+use Ling\TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
+use Ling\TokenFun\Tool\TokenTool;
 
 /**
  * UseStatementsTokenFinder
@@ -13,7 +13,7 @@ use TokenFun\Tool\TokenTool;
  *
  * If finds use statements, like
  *
- *          use TokenFun\Tool\TokenTool;
+ *          use Ling\TokenFun\Tool\TokenTool;
  *
  *
  *
