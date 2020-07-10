@@ -3,6 +3,7 @@
 
 namespace Ling\TokenFun\TokenFinder\Tool;
 
+use Ling\Bat\ClassTool;
 use Ling\Bat\FileSystemTool;
 use Ling\DirScanner\DirScanner;
 use Ling\TokenFun\TokenArrayIterator\TokenArrayIterator;
@@ -75,6 +76,23 @@ class TokenFinderTool
         }
         return $ret;
     }
+
+
+    /**
+     * Returns a basic information array about every class properties of the given class.
+     *
+     * The given class must be reachable
+     *
+     *
+     *
+     * @param $className
+     * @return array
+     */
+    public static function getClassPropertyBasicInfo($className): array{
+        ClassTool::getClassFileByName($className);
+    }
+
+
 
     /**
      * @return string|false, the classname of the parent class if any,

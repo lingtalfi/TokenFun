@@ -5,8 +5,6 @@ namespace Ling\TokenFun\TokenFinder;
 
 /**
  * TokenFinderInterface
- * @author Lingtalfi
- * 2016-01-02
  *
  */
 interface TokenFinderInterface
@@ -20,6 +18,7 @@ interface TokenFinderInterface
      *                                      the index at which the pattern starts
      *                          1: int endIndex
      *                                      the index at which the pattern ends
+     *                          ...: extra numbers can be added, depending on the concrete class
      *
      */
     public function find(array $tokens);
