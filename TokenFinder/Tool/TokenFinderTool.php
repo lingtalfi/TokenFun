@@ -99,6 +99,8 @@ class TokenFinderTool
      * - content: string, the whole property declaration, as written in the file, including the multi-line comments if any
      * - startLine: int, the line number at which the property "block" (i.e. including the doc block comment if any) starts
      * - endLine: int, the line number at which the property "block" ends
+     * - commentStartLine: int, the line number at which the doc bloc comment starts, or false if there is no block comment
+     * - commentEndLine: int, the line number at which the doc bloc comment ends, or false if there is no block comment
      *
      *
      * @param $className
@@ -138,8 +140,16 @@ class TokenFinderTool
 
             $commentToken = TokenTool::fetch($slice, [T_DOC_COMMENT]);
             $docComment = '';
+            $docCommentStartLine = false;
+            $docCommentEndLine = false;
             if (false !== $commentToken) {
                 $docComment = $commentToken[1];
+                $docCommentStartLine = $commentToken[2];
+                $p = explode(PHP_EOL, $docComment);
+                $nbLines = count($p);
+                $docCommentEndLine = $docCommentStartLine + $nbLines - 1;
+
+
             }
 
 
@@ -156,6 +166,8 @@ class TokenFinderTool
                 "content" => $content,
                 "startLine" => $startLine,
                 "endLine" => $endLine,
+                "commentStartLine" => $docCommentStartLine,
+                "commentEndLine" => $docCommentEndLine,
             ];
         }
         return $ret;

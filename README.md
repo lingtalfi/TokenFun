@@ -184,6 +184,10 @@ Dependencies
 History Log
 ------------------
     
+- 1.7.0 -- 2020-07-10
+
+    - update TokenFinderTool::getClassPropertyBasicInfo, now returns the commentStartLine and commentEndLine info
+    
 - 1.6.0 -- 2020-07-10
 
     - update TokenFinderTool::getClassPropertyBasicInfo, now returns the variable names as keys
