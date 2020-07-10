@@ -81,6 +81,7 @@ class TokenFinderTool
 
     /**
      * Returns an array of basic information for every class properties of the given class.
+     * The variable names are used as indexes.
      *
      * Note: the given class must be reachable by the autoloaders.
      *
@@ -144,7 +145,7 @@ class TokenFinderTool
 
             list($startLine, $endLine) = TokenTool::getStartEndLineByTokens($slice);
             $content = TokenTool::tokensToString($slice);
-            $ret[] = [
+            $ret[$varName] = [
                 "varName" => $varName,
                 "hasDocComment" => $hasComment,
                 "docComment" => $docComment,
