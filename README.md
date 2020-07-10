@@ -175,7 +175,7 @@ found in the php files under the given directory.
 Dependencies
 ------------------
 
-- [lingtalfi/Bat 1.23](https://github.com/lingtalfi/Bat)
+- [lingtalfi/Bat 1.256](https://github.com/lingtalfi/Bat)
 - [lingtalfi/DirScanner 1.0.0](https://github.com/lingtalfi/DirScanner)
 
 
@@ -183,6 +183,10 @@ Dependencies
 
 History Log
 ------------------
+    
+- 1.5.0 -- 2020-07-10
+
+    - add TokenFinderTool::getClassPropertyBasicInfo method
     
 - 1.4.0 -- 2020-07-10
 

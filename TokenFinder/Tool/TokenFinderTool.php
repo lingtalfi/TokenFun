@@ -9,6 +9,7 @@ use Ling\DirScanner\DirScanner;
 use Ling\TokenFun\TokenArrayIterator\TokenArrayIterator;
 use Ling\TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
 use Ling\TokenFun\TokenFinder\ClassNameTokenFinder;
+use Ling\TokenFun\TokenFinder\ClassPropertyTokenFinder;
 use Ling\TokenFun\TokenFinder\InterfaceTokenFinder;
 use Ling\TokenFun\TokenFinder\MethodTokenFinder;
 use Ling\TokenFun\TokenFinder\NamespaceTokenFinder;
@@ -79,19 +80,85 @@ class TokenFinderTool
 
 
     /**
-     * Returns a basic information array about every class properties of the given class.
+     * Returns an array of basic information for every class properties of the given class.
      *
-     * The given class must be reachable
+     * Note: the given class must be reachable by the autoloaders.
      *
+     *
+     *
+     * Each basic info array contains the following:
+     *
+     * - varName: string, the variable name
+     * - hasDocComment: bool, whether this property has a docblock comment attached to it (it's a comment that starts with slash double asterisk)
+     * - doComment: string, the docblock comment if any (an empty string otherwise)
+     * - isPublic: bool, whether the property's visibility is public
+     * - isProtected: bool, whether the property's visibility is protected
+     * - isPrivate: bool, whether the property's visibility is private
+     * - isStatic: bool, whether the property is declared as static
+     * - content: string, the whole property declaration, as written in the file, including the multi-line comments if any
+     * - startLine: int, the line number at which the property "block" (i.e. including the doc block comment if any) starts
+     * - endLine: int, the line number at which the property "block" ends
      *
      *
      * @param $className
      * @return array
      */
-    public static function getClassPropertyBasicInfo($className): array{
-        ClassTool::getClassFileByName($className);
-    }
+    public static function getClassPropertyBasicInfo($className): array
+    {
+        $ret = [];
+        $file = ClassTool::getFile($className);
+        $tokens = token_get_all(file_get_contents($file));
+        $o = new ClassPropertyTokenFinder();
+        $matches = $o->find($tokens);
+        foreach ($matches as $match) {
+            list($startIndex, $endIndex) = $match;
+            $slice = TokenTool::slice($tokens, $startIndex, $endIndex);
 
+            $hasComment = TokenTool::matchAny([
+                T_DOC_COMMENT,
+            ], $slice);
+
+            $isPublic = TokenTool::matchAny([
+                T_PUBLIC,
+            ], $slice);
+            $isProtected = TokenTool::matchAny([
+                T_PROTECTED,
+            ], $slice);
+            $isPrivate = TokenTool::matchAny([
+                T_PRIVATE,
+            ], $slice);
+            $isStatic = TokenTool::matchAny([
+                T_STATIC,
+            ], $slice);
+
+//            az(TokenTool::explicitTokenNames($slice));
+            $varToken = TokenTool::fetch($slice, [T_VARIABLE]);
+            $varName = substr($varToken[1], 1); // removing the dollar symbol
+
+            $commentToken = TokenTool::fetch($slice, [T_DOC_COMMENT]);
+            $docComment = '';
+            if (false !== $commentToken) {
+                $docComment = $commentToken[1];
+            }
+
+
+            list($startLine, $endLine) = TokenTool::getStartEndLineByTokens($slice);
+            $content = TokenTool::tokensToString($slice);
+            $ret[] = [
+                "varName" => $varName,
+                "hasDocComment" => $hasComment,
+                "docComment" => $docComment,
+                "isPublic" => $isPublic,
+                "isProtected" => $isProtected,
+                "isPrivate" => $isPrivate,
+                "isStatic" => $isStatic,
+                "content" => $content,
+                "startLine" => $startLine,
+                "endLine" => $endLine,
+            ];
+        }
+        return $ret;
+    }
 
 
     /**
