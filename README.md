@@ -1,6 +1,6 @@
 TokenFun
 =================
-2016-01-02 -> 2020-07-10
+2016-01-02 -> 2020-07-21
 
 
 
@@ -183,6 +183,10 @@ Dependencies
 
 History Log
 ------------------
+    
+- 1.7.1 -- 2020-07-21
+
+    - fix MethodTokenFinder not taking into account return type hint
     
 - 1.7.0 -- 2020-07-10
 

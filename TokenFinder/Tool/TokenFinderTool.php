@@ -9,6 +9,7 @@ use Ling\DirScanner\DirScanner;
 use Ling\TokenFun\TokenArrayIterator\TokenArrayIterator;
 use Ling\TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
 use Ling\TokenFun\TokenFinder\ClassNameTokenFinder;
+use Ling\TokenFun\TokenFinder\ClassOpeningBracketTokenFinder;
 use Ling\TokenFun\TokenFinder\ClassPropertyTokenFinder;
 use Ling\TokenFun\TokenFinder\InterfaceTokenFinder;
 use Ling\TokenFun\TokenFinder\MethodTokenFinder;
@@ -21,7 +22,7 @@ use Ling\TokenFun\Tool\TokenTool;
 /**
  * TokenFinderTool
  * @author Lingtalfi
- * 2016-01-02
+ * 2016-01-02 -> 2020-07-21
  *
  */
 class TokenFinderTool
@@ -79,11 +80,12 @@ class TokenFinderTool
     }
 
 
+
     /**
      * Returns an array of basic information for every class properties of the given class.
      * The variable names are used as indexes.
      *
-     * Note: the given class must be reachable by the autoloaders.
+     * Note: the given class must be reachable by the auto-loaders.
      *
      *
      *
@@ -103,10 +105,10 @@ class TokenFinderTool
      * - commentEndLine: int, the line number at which the doc bloc comment ends, or false if there is no block comment
      *
      *
-     * @param $className
+     * @param string $className
      * @return array
      */
-    public static function getClassPropertyBasicInfo($className): array
+    public static function getClassPropertyBasicInfo(string $className): array
     {
         $ret = [];
         $file = ClassTool::getFile($className);

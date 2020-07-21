@@ -102,14 +102,25 @@ class MethodTokenFinder extends RecursiveTokenFinder
                         }
                     }
                 }
-            }
-            else {
+            } else {
                 $found = false;
                 TokenArrayIteratorTool::skipWhiteSpaces($tai);
                 if (TokenTool::match('(', $tai->current())) {
                     if (true === TokenArrayIteratorTool::moveToCorrespondingEnd($tai)) {
                         $tai->next();
                         TokenArrayIteratorTool::skipWhiteSpaces($tai);
+
+
+                        // hint
+                        if (TokenTool::match(':', $tai->current())) {
+                            $tai->next();
+                            TokenArrayIteratorTool::skipWhiteSpaces($tai);
+                            if (TokenTool::match(T_STRING, $tai->current())) {
+                                $tai->next();
+                                TokenArrayIteratorTool::skipWhiteSpaces($tai);
+                            }
+                        }
+
                         if (TokenTool::match('{', $tai->current())) {
                             if (true === TokenArrayIteratorTool::moveToCorrespondingEnd($tai)) {
                                 $found = true;
