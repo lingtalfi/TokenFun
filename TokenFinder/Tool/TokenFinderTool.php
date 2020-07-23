@@ -529,4 +529,70 @@ class TokenFinderTool
         sort($ret);
         return $ret;
     }
+
+
+    /**
+     * Removes the php comments from the given valid php string, and returns the result.
+     *
+     * Note: a valid php string must start with <?php.
+     *
+     * If the preserveWhiteSpace option is true, it will replace the comments with some whitespaces, so that
+     * the line numbers are preserved.
+     *
+     *
+     * @param string $str
+     * @param bool $preserveWhiteSpace
+     * @return string
+     */
+    public static function removePhpComments(string $str, bool $preserveWhiteSpace = true): string
+    {
+        $commentTokens = [
+            \T_COMMENT,
+            \T_DOC_COMMENT,
+        ];
+        $tokens = token_get_all($str);
+
+
+        if (true === $preserveWhiteSpace) {
+            $lines = explode(PHP_EOL, $str);
+        }
+
+
+        $s = '';
+        foreach ($tokens as $token) {
+            if (is_array($token)) {
+                if (in_array($token[0], $commentTokens)) {
+                    if (true === $preserveWhiteSpace) {
+                        $comment = $token[1];
+                        $lineNb = $token[2];
+                        $firstLine = $lines[$lineNb - 1];
+                        $p = explode(PHP_EOL, $comment);
+                        $nbLineComments = count($p);
+                        if ($nbLineComments < 1) {
+                            $nbLineComments = 1;
+                        }
+                        $firstCommentLine = array_shift($p);
+
+                        $isStandAlone = (trim($firstLine) === trim($firstCommentLine));
+
+                        if (false === $isStandAlone) {
+                            if (2 === $nbLineComments) {
+                                $s .= PHP_EOL;
+                            }
+
+                            continue; // just remove inline comments
+                        }
+
+                        // stand alone case
+                        $s .= str_repeat(PHP_EOL, $nbLineComments - 1);
+                    }
+                    continue;
+                }
+                $token = $token[1];
+            }
+
+            $s .= $token;
+        }
+        return $s;
+    }
 }

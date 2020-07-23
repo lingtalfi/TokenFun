@@ -188,6 +188,10 @@ Dependencies
 History Log
 ------------------
     
+- 1.9.0 -- 2020-07-23
+
+    - add TokenFinderTool::removePhpComments method
+    
 - 1.8.1 -- 2020-07-23
 
     - update TokenFinderTool::getMethodsInfo, now returns static information; fix wrong commentEndLine if the method has no comment
