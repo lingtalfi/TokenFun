@@ -1,6 +1,6 @@
 TokenFun
 =================
-2016-01-02 -> 2020-07-21
+2016-01-02 -> 2020-07-23
 
 
 
@@ -25,6 +25,8 @@ uni import Ling/TokenFun
 
 TokenFinder
 -------------------
+2016-01-02
+
 
 The TokenFinder reads a token stream (as returned by the [token_get_all](http://php.net/manual/en/function.token-get-all.php) php function)
 and parse it linearly, from left to right, finding sets that match the conditions defined by the developer.
@@ -47,6 +49,8 @@ This package comes with classes to find:
 
 TokenFinderTool
 ------------------
+2016-01-02
+
 
 It leverages the power of the TokenFinder to provide one liner methods for common tasks 
 like finding all the "use statements" in a given code or folder.
@@ -183,6 +187,10 @@ Dependencies
 
 History Log
 ------------------
+    
+- 1.8.0 -- 2020-07-23
+
+    - update TokenFinderTool::getMethodsInfo, now returns line numbers for method and comments, and fix method working only for the first method
     
 - 1.7.1 -- 2020-07-21
 

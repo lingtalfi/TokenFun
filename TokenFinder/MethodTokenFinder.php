@@ -10,7 +10,7 @@ use Ling\TokenFun\Tool\TokenTool;
 /**
  * MethodTokenFinder
  * @author Lingtalfi
- * 2016-01-02
+ * 2016-01-02 -> 2020-07-23
  *
  * If finds a method, like for instance:
  *
@@ -45,6 +45,7 @@ class MethodTokenFinder extends RecursiveTokenFinder
      */
     public function find(array $tokens)
     {
+
         $ret = [];
         $tai = new TokenArrayIterator($tokens);
         $start = null;
@@ -62,7 +63,10 @@ class MethodTokenFinder extends RecursiveTokenFinder
                     T_STATIC,
                 ], $cur)
                 ) {
+
                     $key = $tai->key();
+
+
 
                     if (TokenTool::match([
                         T_COMMENT,
@@ -72,6 +76,19 @@ class MethodTokenFinder extends RecursiveTokenFinder
                         $tai->next();
                         TokenArrayIteratorTool::skipWhiteSpaces($tai);
                         $cur = $tai->current();
+
+
+                        // skip all comments except the one that is just above the method
+                        if (TokenTool::match([
+                            T_COMMENT,
+                            T_DOC_COMMENT,
+                        ], $cur)
+                        ) {
+                            $start = null;
+                            continue;
+                        }
+
+
                     }
 
                     while (true === TokenTool::match([

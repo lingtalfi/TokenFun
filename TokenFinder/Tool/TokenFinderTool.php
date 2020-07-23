@@ -80,7 +80,6 @@ class TokenFinderTool
     }
 
 
-
     /**
      * Returns an array of basic information for every class properties of the given class.
      * The variable names are used as indexes.
@@ -281,14 +280,21 @@ class TokenFinderTool
     /**
      *
      * @return array of <info>, each info is an array with the following properties:
-     *      - startIndex: int, the index at which the pattern starts
-     *      - comment: null|string
-     *      - commentType: null|oneLine\multiLine
+     *      - name: string
      *      - visibility: public (default)|private|protected
      *      - abstract: bool
-     *      - name: string
-     *      - args: string
+     *      - final: bool
+     *      - methodStartLine: int
+     *      - methodEndLine: int
      *      - content: string
+     *      - args: string
+     *
+     *      - commentType: null|regular\docBlock
+     *      - commentStartLine: null|int
+     *      - commentEndLine: null|int
+     *      - comment: null|string
+     *
+     *      - startIndex: int, the index at which the pattern starts
      */
     public static function getMethodsInfo(array $tokens)
     {
@@ -296,15 +302,32 @@ class TokenFinderTool
         $ret = [];
         $o = new MethodTokenFinder();
         $matches = $o->find($tokens);
+
+
         if ($matches) {
 
+//            az($matches);
+
             foreach ($matches as $match) {
+
+
                 $length = $match[1] - $match[0];
-                $tokens = array_slice($tokens, $match[0], $length);
+                $matchTokens = array_slice($tokens, $match[0], $length);
+
+
+//                if (299 === $match[0]) {
+//                    az($match, TokenTool::explicitTokenNames($matchTokens));
+//                }
+
+
                 $comment = null;
                 $commentType = null;
+                $commentStartLine = null;
+                $methodStartLine = null;
+                $methodEndLine = null;
                 $visibility = 'public';
                 $abstract = false;
+                $final = false;
                 $name = null;
                 $args = '';
                 $content = '';
@@ -313,28 +336,47 @@ class TokenFinderTool
                 $nameFound = false;
 
 
-                $tai = new TokenArrayIterator($tokens);
+                $tai = new TokenArrayIterator($matchTokens);
 
                 while ($tai->valid()) {
                     $token = $tai->current();
                     if (false === $nameFound) {
                         if (true === TokenTool::match([T_COMMENT, T_DOC_COMMENT], $token)) {
                             if (true === TokenTool::match(T_COMMENT, $token)) {
-                                $commentType = 'oneLine';
+                                $commentType = 'regular';
                             } else {
-                                $commentType = 'multiLine';
+                                $commentType = 'docBlock';
                             }
                             $comment = $token[1];
+                            $commentStartLine = $token[2];
                         }
 
                         if (true === TokenTool::match([T_PUBLIC, T_PROTECTED, T_PRIVATE], $token)) {
                             $visibility = $token[1];
+                            $methodStartLine = $token[2];
                         }
 
                         if (true === TokenTool::match(T_ABSTRACT, $token)) {
                             $abstract = true;
+                            if (null === $methodStartLine) {
+                                $methodStartLine = $token[2];
+                            }
                         }
+
+                        if (true === TokenTool::match(T_FINAL, $token)) {
+                            $final = true;
+                            if (null === $methodStartLine) {
+                                $methodStartLine = $token[2];
+                            }
+                        }
+
+
                         if (true === TokenTool::match(T_FUNCTION, $token)) {
+
+                            if (null === $methodStartLine) {
+                                $methodStartLine = $token[2];
+                            }
+
                             $tai->next();
                             TokenArrayIteratorTool::skipWhiteSpaces($tai);
                             $name = $tai->current()[1];
@@ -353,6 +395,7 @@ class TokenFinderTool
                     if (false === $contentStarted && true === TokenTool::match('{', $tai->current())) {
                         $contentTokens = [];
                         TokenArrayIteratorTool::moveToCorrespondingEnd($tai, null, $contentTokens);
+
                         $content = TokenTool::tokensToString($contentTokens);
                         $contentStarted = true;
                     }
@@ -360,15 +403,37 @@ class TokenFinderTool
                 }
 
 
+                $p = explode(PHP_EOL, $content);
+                $methodEndLine = $methodStartLine + count($p);
+
+
+                if (null !== $commentStartLine) {
+                    if ('//' === substr(trim($comment), 0, 2)) {
+                        $commentEndLine = $commentStartLine;
+                    } else {
+                        $p = explode(PHP_EOL, $comment);
+                        $commentEndLine = $commentStartLine + count($p) - 1;
+                    }
+
+
+                }
+
+
                 $ret[] = [
-                    'startIndex' => $match[0],
-                    'comment' => $comment,
-                    'commentType' => $commentType,
+                    'name' => $name,
                     'visibility' => $visibility,
                     'abstract' => $abstract,
-                    'name' => $name,
-                    'args' => $args,
+                    'final' => $final,
+                    'methodStartLine' => $methodStartLine,
+                    'methodEndLine' => $methodEndLine,
                     'content' => $content,
+                    'args' => $args,
+
+                    'commentType' => $commentType,
+                    'commentStartLine' => $commentStartLine,
+                    'commentEndLine' => $commentEndLine,
+                    'comment' => $comment,
+                    'startIndex' => $match[0],
                 ];
             }
         }
