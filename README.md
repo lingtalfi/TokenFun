@@ -188,6 +188,10 @@ Dependencies
 History Log
 ------------------
     
+- 1.8.1 -- 2020-07-23
+
+    - update TokenFinderTool::getMethodsInfo, now returns static information; fix wrong commentEndLine if the method has no comment
+    
 - 1.8.0 -- 2020-07-23
 
     - update TokenFinderTool::getMethodsInfo, now returns line numbers for method and comments, and fix method working only for the first method

@@ -284,6 +284,7 @@ class TokenFinderTool
      *      - visibility: public (default)|private|protected
      *      - abstract: bool
      *      - final: bool
+     *      - static: bool
      *      - methodStartLine: int
      *      - methodEndLine: int
      *      - content: string
@@ -323,11 +324,13 @@ class TokenFinderTool
                 $comment = null;
                 $commentType = null;
                 $commentStartLine = null;
+                $commentEndLine = null;
                 $methodStartLine = null;
                 $methodEndLine = null;
                 $visibility = 'public';
                 $abstract = false;
                 $final = false;
+                $static = false;
                 $name = null;
                 $args = '';
                 $content = '';
@@ -358,6 +361,13 @@ class TokenFinderTool
 
                         if (true === TokenTool::match(T_ABSTRACT, $token)) {
                             $abstract = true;
+                            if (null === $methodStartLine) {
+                                $methodStartLine = $token[2];
+                            }
+                        }
+
+                        if (true === TokenTool::match(T_STATIC, $token)) {
+                            $static = true;
                             if (null === $methodStartLine) {
                                 $methodStartLine = $token[2];
                             }
@@ -424,6 +434,7 @@ class TokenFinderTool
                     'visibility' => $visibility,
                     'abstract' => $abstract,
                     'final' => $final,
+                    'static' => $static,
                     'methodStartLine' => $methodStartLine,
                     'methodEndLine' => $methodEndLine,
                     'content' => $content,
