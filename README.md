@@ -188,6 +188,10 @@ Dependencies
 History Log
 ------------------
     
+- 1.10.0 -- 2020-07-23
+
+    - update TokenFinderTool::getMethodsInfo, the key of each item is now the name of the method 
+    
 - 1.9.0 -- 2020-07-23
 
     - add TokenFinderTool::removePhpComments method

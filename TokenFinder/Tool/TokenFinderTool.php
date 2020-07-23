@@ -279,7 +279,7 @@ class TokenFinderTool
 
     /**
      *
-     * @return array of <info>, each info is an array with the following properties:
+     * @return array of methodName => <info>, each info is an array with the following properties:
      *      - name: string
      *      - visibility: public (default)|private|protected
      *      - abstract: bool
@@ -307,18 +307,12 @@ class TokenFinderTool
 
         if ($matches) {
 
-//            az($matches);
 
             foreach ($matches as $match) {
 
 
                 $length = $match[1] - $match[0];
                 $matchTokens = array_slice($tokens, $match[0], $length);
-
-
-//                if (299 === $match[0]) {
-//                    az($match, TokenTool::explicitTokenNames($matchTokens));
-//                }
 
 
                 $comment = null;
@@ -429,7 +423,7 @@ class TokenFinderTool
                 }
 
 
-                $ret[] = [
+                $ret[$name] = [
                     'name' => $name,
                     'visibility' => $visibility,
                     'abstract' => $abstract,
