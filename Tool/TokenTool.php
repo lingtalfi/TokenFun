@@ -7,25 +7,9 @@ use Ling\TokenFun\TokenArrayIterator\TokenArrayIterator;
 
 
 /**
- * TokenTool
- * @author Lingtalfi
- * 2016-01-02 -> 2020-07-10
+ * The TokenTool class.
  *
- *
- *
- *
- *
- * tokenProp
- * ------------------
- * A token prop is used as a tool to compare against a php token.
- * It's either:
- *      - a string, in which case it matches with a php token of type string
- *      - an int, in which case it matches with the php token type.
- *      - an array, which contains an arbitrary number of other elements (of type string or int).
- *                      If one at least of those elements matches against the php token,
- *                      the the token prop matches.
- *
- *
+ * See the @page(tokenProp definition) for more details.
  *
  *
  */
@@ -33,7 +17,13 @@ class TokenTool
 {
 
 
-    public static function explicitTokenNames(array $tokens)
+    /**
+     * Returns an array containing whole the given tokens, but with token ids replaced with explicit names.
+     *
+     * @param array $tokens
+     * @return array
+     */
+    public static function explicitTokenNames(array $tokens): array
     {
 
         $ret = [];
@@ -53,16 +43,17 @@ class TokenTool
 
 
     /**
-     * @param $symbol ,
-     *              a tokenProp to use as the delimiter.
-     *              see TokenArrayIteratorTool for more on tokenProp.
+     * Explodes the tokens using the given symbol as the separator.
      *
+     * The symbol is a @page(tokenProp) to use as the delimiter.
+     *
+     *
+     * @param $symbol
      * @param array $tokens
-     * @param null|int $limit ,
-     *                      null means no limit
+     * @param null|int $limit . Null means no limit
      * @return array
      */
-    public static function explodeTokens($symbol, array $tokens, $limit = null)
+    public static function explodeTokens($symbol, array $tokens, $limit = null): array
     {
         $ret = [];
         $tai = new TokenArrayIterator($tokens);
@@ -87,10 +78,7 @@ class TokenTool
 
 
     /**
-     * Returns the first token matching the given tokenProp definition, or false if none of them matches.
-     *
-     * For more info about tokenProp see the comments at the top of this class.
-     *
+     * Returns the first token matching the given @page(tokenProp definition), or false if none of them matches.
      *
      * @param array $tokens
      * @param $tokenProp
@@ -98,7 +86,6 @@ class TokenTool
      */
     public static function fetch(array $tokens, $tokenProp)
     {
-        $ret = [];
         foreach ($tokens as $token) {
             if (true === self::match($token, $tokenProp)) {
                 return $token;
@@ -162,11 +149,13 @@ class TokenTool
 
 
     /**
-     * Strip whitespace (or other characters) from the beginning of a string.
+     * Strip whitespace (or other characters) from the beginning of a string, and returns the array representing the trimmed tokens.
+     *
+     * $chars is an array of @page(tokenProp).
      *
      * @param array $tokens
-     * @param array $chars , an array of tokenProp (see TokenArrayIteratorTool).
-     * @return array representing the trimmed tokens.
+     * @param array $chars
+     * @return array
      */
     public static function ltrim(array $tokens, array $chars = null)
     {
@@ -194,6 +183,8 @@ class TokenTool
      * - tokenProp: see the definition at the top of this class
      *
      *
+     * @param $tokenProp
+     * @param $token
      * @return bool
      * @throws \Exception
      */
@@ -237,11 +228,15 @@ class TokenTool
 
 
     /**
-     * Strip whitespace (or other characters) from the end of a string.
+     * Strip whitespace (or other characters) from the end of a string, and returns an array representing the trimmed tokens.
+     *
+     *
+     * $chars is an array of @page(tokenProp).
+     *
      *
      * @param array $tokens
-     * @param array $chars , an array of tokenProp (see TokenArrayIteratorTool).
-     * @return array representing the trimmed tokens.
+     * @param array $chars
+     * @return array
      */
     public static function rtrim(array $tokens, array $chars = null)
     {
@@ -286,6 +281,13 @@ class TokenTool
     }
 
 
+    /**
+     * Returns the string version of the given tokens.
+     *
+     *
+     * @param array $tokens
+     * @return string
+     */
     public static function tokensToString(array $tokens)
     {
         $s = '';
@@ -301,11 +303,13 @@ class TokenTool
 
 
     /**
-     * Strip whitespace (or other characters) from the beginning and end of a string.
+     * Strip whitespace (or other characters) from the beginning and end of a string, and returns an array representing the trimmed tokens.
+     *
+     * $chars is an array of @page(tokenProp).
      *
      * @param array $tokens
-     * @param array $chars , an array of tokenProp (see TokenArrayIteratorTool).
-     * @return array representing the trimmed tokens.
+     * @param array $chars
+     * @return array
      */
     public static function trim(array $tokens, array $chars = null)
     {

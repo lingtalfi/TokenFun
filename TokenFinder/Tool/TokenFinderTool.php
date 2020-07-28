@@ -6,11 +6,12 @@ namespace Ling\TokenFun\TokenFinder\Tool;
 use Ling\Bat\ClassTool;
 use Ling\Bat\FileSystemTool;
 use Ling\DirScanner\DirScanner;
+use Ling\TokenFun\Exception\TokenFunException;
 use Ling\TokenFun\TokenArrayIterator\TokenArrayIterator;
 use Ling\TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
 use Ling\TokenFun\TokenFinder\ClassNameTokenFinder;
-use Ling\TokenFun\TokenFinder\ClassOpeningBracketTokenFinder;
 use Ling\TokenFun\TokenFinder\ClassPropertyTokenFinder;
+use Ling\TokenFun\TokenFinder\ClassSignatureTokenFinder;
 use Ling\TokenFun\TokenFinder\InterfaceTokenFinder;
 use Ling\TokenFun\TokenFinder\MethodTokenFinder;
 use Ling\TokenFun\TokenFinder\NamespaceTokenFinder;
@@ -20,17 +21,20 @@ use Ling\TokenFun\Tool\TokenTool;
 
 
 /**
- * TokenFinderTool
- * @author Lingtalfi
- * 2016-01-02 -> 2020-07-21
- *
+ * The TokenFinderTool class.
  */
 class TokenFinderTool
 {
 
 
     /**
-     * @param array $matches , an array of matches as returned by a TokenFinder object.
+     *
+     * Replace the matches with their actual content.
+     *
+     * The matches parameter is the array of matches as returned by a TokenFinder object.
+     *
+     * @param array $matches
+     * @param array $tokens
      */
     public static function matchesToString(array &$matches, array $tokens)
     {
@@ -52,11 +56,16 @@ class TokenFinderTool
 
     /**
      *
+     * Returns the class names found in the given tokens, prefixed with namespace if $withNamespaces=true.
+     *
      * Options:
      * - includeInterfaces: bool=false, whether to include interfaces
      *
      *
-     * @return array of class names found, prefixed with namespace if $withNamespaces=true
+     * @param array $tokens
+     * @param bool $withNamespaces
+     * @param array $options
+     * @return array
      *
      */
     public static function getClassNames(array $tokens, $withNamespaces = true, array $options = [])
@@ -176,14 +185,21 @@ class TokenFinderTool
 
 
     /**
-     * @return string|false, the classname of the parent class if any,
-     * and include the full name if $fullName is set to true.
+     * Returns the parent class name, or false if no parent was found.
+     * If $fullName is set to true, the fullName of the parent is returned.
+     *
      *
      * When fullName is true, it tries to see if there is a use statement matching
      * the parent class name, and returns it if it exists.
      * Otherwise, it just prepends the namespace (if no use statement matched the parent class name).
      *
      * Note: as for now it doesn't take into account the "as" alias (i.e. use My\Class as Something)
+     *
+     *
+     * @param array $tokens
+     * @param bool $fullName
+     * @return string|false
+     *
      *
      */
     public static function getParentClassName(array $tokens, $fullName = true)
@@ -222,11 +238,56 @@ class TokenFinderTool
 
 
     /**
-     * @return array, the names of the implemented interfaces (search for the "CCC implements XXX" expression) if any,
+     * Returns an array containing info about the first class signature found in the tokens, or false if no class signature was found.
+     *
+     * In case of success, the returned array structure is:
+     *
+     * - 0: the class signature
+     * - 1: the start line of the signature
+     * - 2: the end line of the signature
+     *
+     *
+     *
+     *
+     * @param array $tokens
+     * @return array
+     * @throws \Exception
+     */
+    public static function getClassSignatureInfo(array $tokens)
+    {
+        $finder = new ClassSignatureTokenFinder();
+        $matches = $finder->find($tokens);
+        if ($matches) {
+            $firstMatch = array_shift($matches);
+            list($startIndex, $endIndex) = $firstMatch;
+
+            $slice = array_slice($tokens, $startIndex, $endIndex - $startIndex + 1);
+            $content = TokenTool::tokensToString($slice);
+            $firstToken = array_shift($slice); // we know by definition that this must has a line info
+            $startLine = $firstToken[2];
+
+            $lastToken = array_pop($slice); // assuming this has a line info
+            if (is_array($lastToken)) {
+                $endLine = $lastToken[2];
+                return [
+                    $content,
+                    $startLine,
+                    $endLine,
+                ];
+            } else {
+                throw new TokenFunException("Oops, the last token of the class signature was not an array, cannot get the end line info. The token was: $lastToken.");
+            }
+        }
+        return false;
+    }
+
+
+    /**
+     *
+     * Returns the interfaces found in the given tokens.
+     *
+     * It returns the names of the implemented interfaces (search for the "CCC implements XXX" expression) if any,
      * and include the full name if $fullName is set to true.
-     *
-     *
-     *
      *
      * When fullName is true, it tries to see if there is a use statement matching
      * the interface class name, and returns it if it exists.
@@ -234,8 +295,16 @@ class TokenFinderTool
      *
      * Note: as for now it doesn't take into account the "as" alias (i.e. use My\Class as Something)
      *
+     *
+     *
+     * @param array $tokens
+     * @param bool $fullName
+     * @return array
+     *
+     *
+     *
      */
-    public static function getInterfaces(array $tokens, $fullName = true)
+    public static function getInterfaces(array $tokens, $fullName = true): array
     {
         $o = new InterfaceTokenFinder();
         $matches = $o->find($tokens);
@@ -279,7 +348,9 @@ class TokenFinderTool
 
     /**
      *
-     * @return array of methodName => <info>, each info is an array with the following properties:
+     * Returns some info about the methods found in the given tokens.
+     *
+     * The returned array is an array of methodName => info, each info is an array with the following properties:
      *      - name: string
      *      - visibility: public (default)|private|protected
      *      - abstract: bool
@@ -289,15 +360,18 @@ class TokenFinderTool
      *      - methodEndLine: int
      *      - content: string
      *      - args: string
-     *
      *      - commentType: null|regular\docBlock
      *      - commentStartLine: null|int
      *      - commentEndLine: null|int
      *      - comment: null|string
-     *
      *      - startIndex: int, the index at which the pattern starts
+     *
+     *
+     * @param array $tokens
+     * @return array
+     * @throws \Exception
      */
-    public static function getMethodsInfo(array $tokens)
+    public static function getMethodsInfo(array $tokens): array
     {
 
         $ret = [];
@@ -446,8 +520,10 @@ class TokenFinderTool
     }
 
     /**
+     * Returns the first namespace found in the given tokens, or false otherwise.
+     *
      * @param array $tokens
-     * @return false|string, the first namespace found or false if there is no namespace
+     * @return false|string
      */
     public static function getNamespace(array $tokens)
     {
@@ -466,9 +542,13 @@ class TokenFinderTool
 
 
     /**
-     * @return array of use statements' class names
+     *
+     * Returns an array of use statements' class names found in the given tokens.
+     * @param array $tokens
+     * @param bool $sort
+     * @return array
      */
-    public static function getUseDependencies(array $tokens, $sort = true)
+    public static function getUseDependencies(array $tokens, $sort = true): array
     {
         $ret = [];
         $o = new UseStatementsTokenFinder();
@@ -489,9 +569,12 @@ class TokenFinderTool
     }
 
     /**
-     * @return array of use statements' class names inside the given directory
+     * Returns an array of use statements' class names inside the given directory.
+     *
+     * @param string $dir
+     * @return array
      */
-    public static function getUseDependenciesByFolder($dir)
+    public static function getUseDependenciesByFolder(string $dir): array
     {
         $ret = [];
         DirScanner::create()->scanDir($dir, function ($path, $rPath, $level) use (&$ret) {

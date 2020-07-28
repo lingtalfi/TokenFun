@@ -34,13 +34,7 @@ class NewObjectTokenFinder extends RecursiveTokenFinder
 
 
     /**
-     * @return array of match
-     *                  every match is an array with the following entries:
-     *                          0: int startIndex
-     *                                      the index at which the pattern starts
-     *                          1: int endIndex
-     *                                      the index at which the pattern ends
-     *
+     * @implementation
      */
     public function find(array $tokens)
     {
@@ -87,6 +81,16 @@ class NewObjectTokenFinder extends RecursiveTokenFinder
     //------------------------------------------------------------------------------/
     // 
     //------------------------------------------------------------------------------/
+    /**
+     * Make the iterator skip the parenthesis wrapping, if it's the current (non whitespace) element.
+     *
+     * @param TokenArrayIteratorInterface $tai
+     * @param $found
+     * @param $start
+     * @param $ret
+     * @return bool
+     * @throws \Exception
+     */
     protected function parseParenthesis(TokenArrayIteratorInterface $tai, &$found, &$start, &$ret)
     {
         TokenArrayIteratorTool::skipWhiteSpaces($tai);
