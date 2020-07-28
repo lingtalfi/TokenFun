@@ -8,10 +8,7 @@ use Ling\TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
 use Ling\TokenFun\Tool\TokenTool;
 
 /**
- * ClassTokenFinder
- * @author Lingtalfi
- * 2016-01-02
- *
+ * The ClassTokenFinder class.
  *
  * It assumes that the php code is valid.
  * If finds a className, like for instance if the given code is

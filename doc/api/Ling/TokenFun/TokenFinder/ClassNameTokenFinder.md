@@ -14,7 +14,19 @@ The ClassNameTokenFinder class
 Introduction
 ============
 
-ClassTokenFinder
+The ClassTokenFinder class.
+
+It assumes that the php code is valid.
+If finds a className, like for instance if the given code is
+
+         class Doo{
+             // ...
+         }
+
+It will also match Traits.
+
+
+and matches Doo.
 
 
 

@@ -7,9 +7,7 @@ use Ling\TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
 use Ling\TokenFun\Tool\TokenTool;
 
 /**
- * UseStatementsTokenFinder
- * @author Lingtalfi
- * 2016-01-02
+ * The UseStatementsTokenFinder class.
  *
  * If finds use statements, like
  *

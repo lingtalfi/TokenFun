@@ -14,7 +14,16 @@ The ArrayReferenceTokenFinder class
 Introduction
 ============
 
-ArrayReferenceTokenFinder
+The ArrayReferenceTokenFinder class.
+
+If finds an array reference, like for instance:
+
+         - $a["doo"]
+         - $a[5]
+         - $a[5 + 3]
+         - $a["doo" . "pp"]
+         - $a[$po()]
+         - $a[$po[doo()]]
 
 
 

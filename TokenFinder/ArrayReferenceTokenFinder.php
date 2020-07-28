@@ -8,9 +8,7 @@ use Ling\TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
 use Ling\TokenFun\Tool\TokenTool;
 
 /**
- * ArrayReferenceTokenFinder
- * @author Lingtalfi
- * 2016-01-02
+ * The ArrayReferenceTokenFinder class.
  *
  * If finds an array reference, like for instance:
  *

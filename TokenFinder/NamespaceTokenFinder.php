@@ -8,9 +8,8 @@ use Ling\TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
 use Ling\TokenFun\Tool\TokenTool;
 
 /**
- * NamespaceTokenFinder
- * @author Lingtalfi
- * 2016-01-02
+ * The NamespaceTokenFinder class.
+ *
  *
  * If finds a namespace, like
  *

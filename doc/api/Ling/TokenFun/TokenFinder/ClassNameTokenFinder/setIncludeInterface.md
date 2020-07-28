@@ -49,7 +49,7 @@ Returns [ClassNameTokenFinder](https://github.com/lingtalfi/TokenFun/blob/master
 
 Source Code
 ===========
-See the source code for method [ClassNameTokenFinder::setIncludeInterface](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/ClassNameTokenFinder.php#L62-L66)
+See the source code for method [ClassNameTokenFinder::setIncludeInterface](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/ClassNameTokenFinder.php#L59-L63)
 
 
 See Also

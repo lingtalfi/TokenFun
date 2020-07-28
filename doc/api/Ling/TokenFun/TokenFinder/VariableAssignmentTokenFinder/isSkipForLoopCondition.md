@@ -46,7 +46,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [VariableAssignmentTokenFinder::isSkipForLoopCondition](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/VariableAssignmentTokenFinder.php#L363-L366)
+See the source code for method [VariableAssignmentTokenFinder::isSkipForLoopCondition](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/VariableAssignmentTokenFinder.php#L361-L364)
 
 
 See Also

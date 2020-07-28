@@ -14,7 +14,16 @@ The InterfaceTokenFinder class
 Introduction
 ============
 
-InterfaceTokenFinder
+The InterfaceTokenFinder class.
+
+It assumes that the php code is valid.
+If finds the className after the implements keyword, like for instance if the given code is
+
+         class Doo implements Poo {
+             // ...
+         }
+
+It will match Poo.
 
 
 

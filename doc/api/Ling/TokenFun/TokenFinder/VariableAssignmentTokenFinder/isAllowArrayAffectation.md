@@ -46,7 +46,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [VariableAssignmentTokenFinder::isAllowArrayAffectation](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/VariableAssignmentTokenFinder.php#L403-L406)
+See the source code for method [VariableAssignmentTokenFinder::isAllowArrayAffectation](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/VariableAssignmentTokenFinder.php#L401-L404)
 
 
 See Also

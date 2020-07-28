@@ -54,7 +54,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [ClassNameTokenFinder::find](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/ClassNameTokenFinder.php#L72-L113)
+See the source code for method [ClassNameTokenFinder::find](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/ClassNameTokenFinder.php#L69-L110)
 
 
 See Also

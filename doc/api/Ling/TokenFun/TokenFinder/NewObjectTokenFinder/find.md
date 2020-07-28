@@ -54,7 +54,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [NewObjectTokenFinder::find](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/NewObjectTokenFinder.php#L39-L79)
+See the source code for method [NewObjectTokenFinder::find](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/NewObjectTokenFinder.php#L37-L77)
 
 
 See Also

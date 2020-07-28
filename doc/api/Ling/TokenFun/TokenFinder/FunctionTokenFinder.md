@@ -14,7 +14,13 @@ The FunctionTokenFinder class
 Introduction
 ============
 
-FunctionTokenFinder
+The FunctionTokenFinder class.
+
+If finds a function, like for instance:
+
+         function(){
+             echo "doo";
+         }
 
 
 

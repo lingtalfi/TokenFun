@@ -14,7 +14,133 @@ The VariableAssignmentTokenFinder class
 Introduction
 ============
 
-VariableAssignmentTokenFinder
+The VariableAssignmentTokenFinder class.
+
+If finds a variable assignment, like for instance:
+
+         - $o = 6;
+         - $o = $p;
+         - $o = $p + 4;
+         - $o = "pou";
+         - $o = "pou" . "poo";
+         - $o = <<<EOF
+                     blabla
+           EOF;
+         - $o = <<<'EOF'
+                     blabla
+           EOF;
+         - $o = array();
+         - $o = ["apple" => 'juice'];
+         - $o = new \Poo();
+         - $o = 6 + 4 / 78;
+
+
+With some options, it can also find more:
+
+         - $o['oo'] = 6;
+         - $o['oo'][987] = 6;
+         - $$dyn = 6;
+         - $$$$dyn = 6;
+
+
+
+Note:
+     assignments via ternary operator are not handled.
+
+
+
+Nested elements can also be found with nestedMode enabled (disabled by default).
+This happens only if a variable instantiation contains other variables instantiation, like in the following example:
+
+         $o = function(){
+                $p = 4;
+              };
+
+
+
+Variables instantiation inside class are not parsed by default.
+Set the skipClass flag to false (true by default) to override this behaviour.
+
+         class DOO{
+                protected $do = 6;
+
+                 public function __construct(){
+                     $this->do = 7;
+                     $p = 8;
+                 }
+         }
+
+
+
+     Personal note:
+             This class is not designed to parse variables from a class, instead, you should create another
+             more specialized class if that's what you are looking for.
+
+
+
+Variables instantiation inside regular (not assigned to a variable) function are not parsed by default.
+Set the skipFunction flag to false (true by default) to override this behaviour.
+
+         function poo(){
+             $x = 5;
+         }
+
+
+
+
+Variables inside for loops conditions are skipped by default.
+Set the skipForLoopCondition flag to false (true by default) to override this behaviour.
+
+         for( $i=0; $i <= 10; $i++ ){
+             // do something
+         }
+
+
+
+Variables inside statements-group of control structure are parsed by default.
+Set the skipControlStructure flag to true (false by default) to override this behaviour.
+
+             if(true){
+                 $o = 6;
+             }
+
+             while(true){
+                 $o = 6;
+             }
+
+             switch ($o){
+                 case "pou":
+                     $p = 9;
+                 break;
+             }
+
+             foreach($doom as $do){
+                 $p = 8;
+             }
+
+             for($i=0; $i<=10; $i++){
+                 $p = 8;
+             }
+
+             ...
+
+
+
+Array affectations are not parsed by default.
+Set the allowArrayAffectation flag to true (false by default) to override this behaviour.
+
+
+             $p["pou"] = 6;
+             $p["pou"]["dii"] = 6;
+
+
+
+By default, dynamic variables (on the left part of the equal symbol) are not parsed.
+Set the allowDynamic flag to true (false by default) to override this behaviour.
+
+
+             $$dyn = 6;
+             $$$$$dyn = 6;
 
 
 

@@ -46,7 +46,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [VariableAssignmentTokenFinder::isAllowDynamic](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/VariableAssignmentTokenFinder.php#L423-L426)
+See the source code for method [VariableAssignmentTokenFinder::isAllowDynamic](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/VariableAssignmentTokenFinder.php#L421-L424)
 
 
 See Also

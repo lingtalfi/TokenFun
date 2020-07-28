@@ -46,7 +46,7 @@ Returns bool.
 
 Source Code
 ===========
-See the source code for method [VariableAssignmentTokenFinder::isSkipFunction](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/VariableAssignmentTokenFinder.php#L343-L346)
+See the source code for method [VariableAssignmentTokenFinder::isSkipFunction](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/VariableAssignmentTokenFinder.php#L341-L344)
 
 
 See Also

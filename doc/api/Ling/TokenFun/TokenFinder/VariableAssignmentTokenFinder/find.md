@@ -54,7 +54,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [VariableAssignmentTokenFinder::find](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/VariableAssignmentTokenFinder.php#L202-L316)
+See the source code for method [VariableAssignmentTokenFinder::find](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/VariableAssignmentTokenFinder.php#L200-L314)
 
 
 See Also

@@ -7,9 +7,7 @@ use Ling\TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
 use Ling\TokenFun\Tool\TokenTool;
 
 /**
- * VariableAssignmentTokenFinder
- * @author Lingtalfi
- * 2016-01-02
+ * The VariableAssignmentTokenFinder class.
  *
  * If finds a variable assignment, like for instance:
  *

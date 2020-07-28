@@ -8,7 +8,7 @@ use Ling\TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
 use Ling\TokenFun\Tool\TokenTool;
 
 /**
- * The ClassPropertyTokenFinder class
+ * The ClassPropertyTokenFinder class.
  *
  *
  *

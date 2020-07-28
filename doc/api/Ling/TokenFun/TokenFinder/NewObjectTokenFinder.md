@@ -14,7 +14,19 @@ The NewObjectTokenFinder class
 Introduction
 ============
 
-NewObjectTokenFinder
+The NewObjectTokenFinder class.
+
+If finds an object instantiation, like for instance:
+
+         - new \Poo()
+         - new Poo()
+         - new $doo()
+         - new $doo["cam"]()
+
+
+Nested elements can also be found with nestedMode enabled (disabled by default).
+
+         - new Poo(new Poo())
 
 
 

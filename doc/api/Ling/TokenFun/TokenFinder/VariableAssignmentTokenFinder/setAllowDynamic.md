@@ -49,7 +49,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [VariableAssignmentTokenFinder::setAllowDynamic](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/VariableAssignmentTokenFinder.php#L433-L436)
+See the source code for method [VariableAssignmentTokenFinder::setAllowDynamic](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/VariableAssignmentTokenFinder.php#L431-L434)
 
 
 See Also

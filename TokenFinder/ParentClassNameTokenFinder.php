@@ -8,9 +8,7 @@ use Ling\TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
 use Ling\TokenFun\Tool\TokenTool;
 
 /**
- * ParentClassNameTokenFinder
- * @author Lingtalfi
- * 2017-03-23
+ * The ParentClassNameTokenFinder class.
  *
  *
  * It assumes that the php code is valid.

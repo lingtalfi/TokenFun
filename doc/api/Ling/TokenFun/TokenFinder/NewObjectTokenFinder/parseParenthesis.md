@@ -66,7 +66,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [NewObjectTokenFinder::parseParenthesis](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/NewObjectTokenFinder.php#L94-L107)
+See the source code for method [NewObjectTokenFinder::parseParenthesis](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/NewObjectTokenFinder.php#L92-L105)
 
 
 See Also

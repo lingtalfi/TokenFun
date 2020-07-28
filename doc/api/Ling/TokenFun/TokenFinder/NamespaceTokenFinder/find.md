@@ -54,7 +54,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [NamespaceTokenFinder::find](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/NamespaceTokenFinder.php#L28-L63)
+See the source code for method [NamespaceTokenFinder::find](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/NamespaceTokenFinder.php#L27-L62)
 
 
 See Also

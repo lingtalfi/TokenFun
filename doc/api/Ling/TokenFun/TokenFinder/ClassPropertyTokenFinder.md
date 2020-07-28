@@ -14,7 +14,7 @@ The ClassPropertyTokenFinder class
 Introduction
 ============
 
-The ClassPropertyTokenFinder class
+The ClassPropertyTokenFinder class.
 
 
 

@@ -9,9 +9,7 @@ use Ling\TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
 use Ling\TokenFun\Tool\TokenTool;
 
 /**
- * NewObjectTokenFinder
- * @author Lingtalfi
- * 2016-01-02
+ * The NewObjectTokenFinder class.
  *
  * If finds an object instantiation, like for instance:
  *

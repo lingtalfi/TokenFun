@@ -50,6 +50,10 @@ Dependencies
 History Log
 ------------------
     
+- 1.11.1 -- 2020-07-28
+
+    - update finder class doc, removed author tag
+    
 - 1.11.0 -- 2020-07-28
 
     - add ClassSignatureTokenFinder class, add docTool doc

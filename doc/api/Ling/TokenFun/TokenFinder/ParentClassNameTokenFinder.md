@@ -14,7 +14,17 @@ The ParentClassNameTokenFinder class
 Introduction
 ============
 
-ParentClassNameTokenFinder
+The ParentClassNameTokenFinder class.
+
+
+It assumes that the php code is valid.
+If finds the className after the extends keyword, like for instance if the given code is
+
+         class Doo extends Poo {
+             // ...
+         }
+
+It will match Poo.
 
 
 

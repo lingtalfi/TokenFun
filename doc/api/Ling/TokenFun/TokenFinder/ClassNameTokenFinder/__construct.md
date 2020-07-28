@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [ClassNameTokenFinder::__construct](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/ClassNameTokenFinder.php#L50-L54)
+See the source code for method [ClassNameTokenFinder::__construct](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/ClassNameTokenFinder.php#L47-L51)
 
 
 See Also

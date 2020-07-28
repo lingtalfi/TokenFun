@@ -54,7 +54,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [InterfaceTokenFinder::find](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/InterfaceTokenFinder.php#L34-L76)
+See the source code for method [InterfaceTokenFinder::find](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/InterfaceTokenFinder.php#L31-L73)
 
 
 See Also

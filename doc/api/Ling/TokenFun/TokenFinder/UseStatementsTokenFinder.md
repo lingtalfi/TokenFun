@@ -14,7 +14,11 @@ The UseStatementsTokenFinder class
 Introduction
 ============
 
-UseStatementsTokenFinder
+The UseStatementsTokenFinder class.
+
+If finds use statements, like
+
+         use Ling\TokenFun\Tool\TokenTool;
 
 
 

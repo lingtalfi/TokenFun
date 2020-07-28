@@ -14,7 +14,23 @@ The MethodTokenFinder class
 Introduction
 ============
 
-MethodTokenFinder
+The MethodTokenFinder class.
+
+If finds a method, like for instance:
+
+         public function Shoo(){
+             echo "doo";
+         }
+
+
+Note: this implementation might also match a regular function, like
+
+         function my_function(){
+             echo "doo";
+         }
+
+
+Therefore, one should be aware of the context.
 
 
 

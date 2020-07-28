@@ -14,7 +14,12 @@ The NamespaceTokenFinder class
 Introduction
 ============
 
-NamespaceTokenFinder
+The NamespaceTokenFinder class.
+
+
+If finds a namespace, like
+
+         namespace ArachnophoBee\Tool;
 
 
 

@@ -49,7 +49,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [VariableAssignmentTokenFinder::setSkipFunction](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/VariableAssignmentTokenFinder.php#L353-L356)
+See the source code for method [VariableAssignmentTokenFinder::setSkipFunction](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/VariableAssignmentTokenFinder.php#L351-L354)
 
 
 See Also

@@ -8,9 +8,7 @@ use Ling\TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
 use Ling\TokenFun\Tool\TokenTool;
 
 /**
- * MethodTokenFinder
- * @author Lingtalfi
- * 2016-01-02 -> 2020-07-23
+ * The MethodTokenFinder class.
  *
  * If finds a method, like for instance:
  *

@@ -46,7 +46,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [VariableAssignmentTokenFinder::__construct](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/VariableAssignmentTokenFinder.php#L187-L196)
+See the source code for method [VariableAssignmentTokenFinder::__construct](https://github.com/lingtalfi/TokenFun/blob/master/TokenFinder/VariableAssignmentTokenFinder.php#L185-L194)
 
 
 See Also

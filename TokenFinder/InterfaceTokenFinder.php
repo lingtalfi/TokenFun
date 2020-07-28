@@ -8,10 +8,7 @@ use Ling\TokenFun\TokenArrayIterator\Tool\TokenArrayIteratorTool;
 use Ling\TokenFun\Tool\TokenTool;
 
 /**
- * InterfaceTokenFinder
- * @author Lingtalfi
- * 2017-03-23
- *
+ * The InterfaceTokenFinder class.
  *
  * It assumes that the php code is valid.
  * If finds the className after the implements keyword, like for instance if the given code is
