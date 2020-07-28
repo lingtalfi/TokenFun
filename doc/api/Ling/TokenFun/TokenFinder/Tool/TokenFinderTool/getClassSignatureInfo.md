@@ -25,7 +25,7 @@ Returns an array containing info about the first class signature found in the to
 
 In case of success, the returned array structure is:
 
-- 0: the class signature
+- 0: the class signature, including comments if any
 - 1: the start line of the signature
 - 2: the end line of the signature
 

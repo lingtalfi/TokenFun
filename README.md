@@ -50,6 +50,10 @@ Dependencies
 History Log
 ------------------
     
+- 1.11.2 -- 2020-07-28
+
+    - update TokenFinderTool::getClassSignatureInfo docBlock comment
+    
 - 1.11.1 -- 2020-07-28
 
     - update finder class doc, removed author tag
