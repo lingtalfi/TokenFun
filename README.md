@@ -49,7 +49,11 @@ Dependencies
 
 History Log
 ------------------
-    
+
+- 1.11.3 -- 2020-12-04
+
+    - Add lpi-deps.byml file
+
 - 1.11.2 -- 2020-07-28
 
     - update TokenFinderTool::getClassSignatureInfo docBlock comment
