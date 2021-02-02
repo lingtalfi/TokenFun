@@ -1,6 +1,6 @@
 TokenFun
 =================
-2016-01-02 -> 2020-07-28
+2016-01-02 -> 2021-02-02
 
 
 
@@ -50,9 +50,13 @@ Dependencies
 History Log
 ------------------
 
+- 1.11.5 -- 2021-02-02
+
+    - update TokenArrayIteratorTool::skipNsChain to work with php8
+
 - 1.11.4 -- 2020-12-08
 
-    - Fix lpi-deps not using natsort.
+    - Fix lpi-deps not using natsort
 
 - 1.11.3 -- 2020-12-04
 
