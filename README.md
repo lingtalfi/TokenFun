@@ -1,6 +1,6 @@
 TokenFun
 =================
-2016-01-02 -> 2021-02-02
+2016-01-02 -> 2021-03-05
 
 
 
@@ -14,6 +14,11 @@ TokenFun is part of the [universe framework](https://github.com/karayabin/univer
 
 Install
 ==========
+Using the [planet installer](https://github.com/lingtalfi/Light_PlanetInstaller) via [light-cli](https://github.com/lingtalfi/Light_Cli)
+```bash
+lt install Ling.TokenFun
+```
+
 Using the [uni](https://github.com/lingtalfi/universe-naive-importer) command.
 ```bash
 uni import Ling/TokenFun
@@ -49,6 +54,10 @@ Dependencies
 
 History Log
 ------------------
+
+- 1.11.6 -- 2021-03-05
+
+    - update README.md, add install alternative
 
 - 1.11.5 -- 2021-02-02
 
