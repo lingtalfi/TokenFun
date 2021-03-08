@@ -49,7 +49,7 @@ Returns string.
 
 Source Code
 ===========
-See the source code for method [UseStatementsParser::debugToken](https://github.com/lingtalfi/TokenFun/blob/master/Parser/UseStatementsParser.php#L275-L285)
+See the source code for method [UseStatementsParser::debugToken](https://github.com/lingtalfi/TokenFun/blob/master/Parser/UseStatementsParser.php#L292-L302)
 
 
 See Also

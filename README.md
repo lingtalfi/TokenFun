@@ -1,6 +1,6 @@
 TokenFun
 =================
-2016-01-02 -> 2021-03-05
+2016-01-02 -> 2021-03-08
 
 
 
@@ -55,6 +55,10 @@ Dependencies
 History Log
 ------------------
 
+- 1.11.7 -- 2021-03-08
+
+    - add UseStatementsParser and bnb tests, update TokenFinderTool::getUseDependencies
+  
 - 1.11.6 -- 2021-03-05
 
     - update README.md, add install alternative

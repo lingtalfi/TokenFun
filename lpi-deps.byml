@@ -77,3 +77,7 @@
 1.11.6: 
     - Ling:Bat:1.308+
     - Ling:DirScanner:1.13.4+
+
+1.11.7: 
+    - Ling:Bat:1.308+
+    - Ling:DirScanner:1.13.5+

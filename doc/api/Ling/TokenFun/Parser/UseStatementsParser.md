@@ -4,7 +4,7 @@
 
 The UseStatementsParser class
 ================
-2020-07-28 --> 2021-03-05
+2020-07-28 --> 2021-03-08
 
 
 
@@ -38,7 +38,7 @@ class <span class="pl-k">UseStatementsParser</span>  {
 Methods
 ==============
 
-- [UseStatementsParser::parseTokens](https://github.com/lingtalfi/TokenFun/blob/master/doc/api/Ling/TokenFun/Parser/UseStatementsParser/parseTokens.md) &ndash; 
+- [UseStatementsParser::parseTokens](https://github.com/lingtalfi/TokenFun/blob/master/doc/api/Ling/TokenFun/Parser/UseStatementsParser/parseTokens.md) &ndash; The method will stop parsing tokens after it encounters the first "class" token, assuming the class is [bsr0 compatible](https://github.com/lingtalfi/BumbleBee/blob/master/Autoload/convention.bsr0.eng.md).
 - [UseStatementsParser::debugToken](https://github.com/lingtalfi/TokenFun/blob/master/doc/api/Ling/TokenFun/Parser/UseStatementsParser/debugToken.md) &ndash; Returns a string representation of the token, suitable for debugging purposes.
 
 

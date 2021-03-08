@@ -1,6 +1,6 @@
 Ling/TokenFun
 ================
-2020-07-28 --> 2021-03-05
+2020-07-28 --> 2021-03-08
 
 
 
@@ -10,7 +10,7 @@ Table of contents
 
 - [TokenFunException](https://github.com/lingtalfi/TokenFun/blob/master/doc/api/Ling/TokenFun/Exception/TokenFunException.md) &ndash; The TokenFunException class.
 - [UseStatementsParser](https://github.com/lingtalfi/TokenFun/blob/master/doc/api/Ling/TokenFun/Parser/UseStatementsParser.md) &ndash; The UseStatementsParser class.
-    - [UseStatementsParser::parseTokens](https://github.com/lingtalfi/TokenFun/blob/master/doc/api/Ling/TokenFun/Parser/UseStatementsParser/parseTokens.md) &ndash; The parseTokens method
+    - [UseStatementsParser::parseTokens](https://github.com/lingtalfi/TokenFun/blob/master/doc/api/Ling/TokenFun/Parser/UseStatementsParser/parseTokens.md) &ndash; The method will stop parsing tokens after it encounters the first "class" token, assuming the class is [bsr0 compatible](https://github.com/lingtalfi/BumbleBee/blob/master/Autoload/convention.bsr0.eng.md).
 - [TokenArrayIterator](https://github.com/lingtalfi/TokenFun/blob/master/doc/api/Ling/TokenFun/TokenArrayIterator/TokenArrayIterator.md) &ndash; The TokenArrayIterator class.
     - [TokenArrayIterator::__construct](https://github.com/lingtalfi/TokenFun/blob/master/doc/api/Ling/TokenFun/TokenArrayIterator/TokenArrayIterator/__construct.md) &ndash; Builds the TokenArrayIterator instance.
     - [TokenArrayIterator::key](https://github.com/lingtalfi/TokenFun/blob/master/doc/api/Ling/TokenFun/TokenArrayIterator/TokenArrayIterator/key.md) &ndash; Returns the current key, or false if the cursor is out of bounds.

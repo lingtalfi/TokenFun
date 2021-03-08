@@ -7,7 +7,7 @@ UseStatementsParser::parseTokens
 
 
 
-UseStatementsParser::parseTokens — 
+UseStatementsParser::parseTokens — The method will stop parsing tokens after it encounters the first "class" token, assuming the class is [bsr0 compatible](https://github.com/lingtalfi/BumbleBee/blob/master/Autoload/convention.bsr0.eng.md).
 
 
 
@@ -55,6 +55,10 @@ Apparently the following cases are not handled by php yet, so it's not handled i
 
 
 
+The method will stop parsing tokens after it encounters the first "class" token, assuming the class is [bsr0 compatible](https://github.com/lingtalfi/BumbleBee/blob/master/Autoload/convention.bsr0.eng.md).
+
+
+
 
 Parameters
 ================
@@ -79,7 +83,7 @@ Returns array.
 
 Source Code
 ===========
-See the source code for method [UseStatementsParser::parseTokens](https://github.com/lingtalfi/TokenFun/blob/master/Parser/UseStatementsParser.php#L54-L264)
+See the source code for method [UseStatementsParser::parseTokens](https://github.com/lingtalfi/TokenFun/blob/master/Parser/UseStatementsParser.php#L58-L281)
 
 
 See Also

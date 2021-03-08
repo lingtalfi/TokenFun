@@ -48,6 +48,10 @@ class UseStatementsParser
      *
      *
      *
+     * The method will stop parsing tokens after it encounters the first "class" token, assuming the class is [bsr0 compatible](https://github.com/lingtalfi/BumbleBee/blob/master/Autoload/convention.bsr0.eng.md).
+     *
+     *
+     *
      * @param array $tokens
      * @return array
      */
@@ -70,9 +74,11 @@ class UseStatementsParser
             $itemType = 'class';
 
 
-            foreach ($tokens as $token) {
+            $tokensDebug = [];
 
-                echo "parsing " . $this->debugToken($token) . "<br>";
+            foreach ($tokens as $token) {
+                $tokensDebug[] = $token;
+//                echo "parsing " . $this->debugToken($token) . "<br>";
 
 
                 // assertion
@@ -82,13 +88,24 @@ class UseStatementsParser
                         $nsSepFound = false;
                         continue;
                     } else {
-                        throw new TokenFunException("Invalid assertion, the T_NS_SEPARATOR was not immediately followed by an opening curly bracket. This code needs more love.");
+                        throw new TokenFunException("UseStatementsParser: Invalid assertion, the T_NS_SEPARATOR was not immediately followed by an opening curly bracket. This code needs more love.");
                     }
                 }
 
                 $symbol = null;
                 if (true === is_array($token)) {
                     $symbol = $token[0];
+                }
+
+
+                /**
+                 * We stop parsing after the "class" keyword.
+                 * This is because this method recognizes "use" keywords, and unfortunately the use keywords can be use also after functions (as in function() use($var)...).
+                 * So stopping the parsing after the "class" keyword helps us filter out the "use" keywords we don't want.
+                 *
+                 */
+                if (T_CLASS === $symbol) {
+                    break;
                 }
 
 
@@ -196,7 +213,7 @@ class UseStatementsParser
                                         goto item_end;
 
                                     } else {
-                                        throw new TokenFunException("Unknown case with token: " . $this->debugToken($token));
+                                        throw new TokenFunException("UseStatementsParser: Unknown case with token (1): " . $this->debugToken($token));
                                     }
                             }
                         }
@@ -221,7 +238,7 @@ class UseStatementsParser
                                     $itemType = 'const';
                                     break;
                                 default:
-                                    throw new TokenFunException("Unknown case with token: " . $this->debugToken($token));
+                                    throw new TokenFunException("UseStatementsParser: Unknown case with token (2): " . $this->debugToken($token));
                             }
                         } else {
                             //--------------------------------------------
@@ -247,7 +264,7 @@ class UseStatementsParser
                                     $itemType = 'const';
                                     break;
                                 default:
-                                    throw new TokenFunException("Unknown case with token: " . $this->debugToken($token));
+                                    throw new TokenFunException("UseStatementsParser: Unknown case with token (3): " . $this->debugToken($token));
                             }
                         }
                     }
@@ -256,7 +273,7 @@ class UseStatementsParser
             }
         } catch
         (\Exception $e) {
-            a($ret);
+//            a(TokenTool::explicitTokenNames($tokensDebug));
             throw $e;
         }
 
