@@ -1,6 +1,6 @@
 TokenFun
 =================
-2016-01-02 -> 2021-03-08
+2016-01-02 -> 2021-06-03
 
 
 
@@ -54,6 +54,10 @@ Dependencies
 
 History Log
 ------------------
+
+- 1.11.9 -- 2021-06-03
+
+    - fix TokenArrayIteratorTool::moveToCorrespondingEnd capturing false sometimes
 
 - 1.11.8 -- 2021-05-31
 

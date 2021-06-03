@@ -73,6 +73,11 @@ class TokenArrayIteratorTool
                 while ($tai->valid()) {
                     $tai->next();
                     $token = $tai->current();
+
+                    if(false === $token){
+                        continue;
+                    }
+
                     $capture[] = $token;
                     if (is_string($token)) {
                         if ($begin === $token) {
