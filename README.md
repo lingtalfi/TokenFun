@@ -55,6 +55,10 @@ Dependencies
 History Log
 ------------------
 
+- 1.11.11 -- 2021-06-04
+
+    - fix ClassPropertyTokenFinder not recognizing ? and | chars
+  
 - 1.11.10 -- 2021-06-04
 
     - fix ClassPropertyTokenFinder not recognizing property type
