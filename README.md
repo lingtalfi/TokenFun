@@ -1,6 +1,6 @@
 TokenFun
 =================
-2016-01-02 -> 2021-06-03
+2016-01-02 -> 2021-06-04
 
 
 
@@ -55,6 +55,10 @@ Dependencies
 History Log
 ------------------
 
+- 1.11.10 -- 2021-06-04
+
+    - fix ClassPropertyTokenFinder not recognizing property type
+  
 - 1.11.9 -- 2021-06-03
 
     - fix TokenArrayIteratorTool::moveToCorrespondingEnd capturing false sometimes

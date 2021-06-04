@@ -73,6 +73,20 @@ class ClassPropertyTokenFinder extends RecursiveTokenFinder
                             $cur = $tai->current();
                         }
 
+                        /**
+                         * variable type if any (object, array, ...)
+                         */
+
+                        while (true === TokenTool::match([
+                                T_STRING,
+                            ], $cur)) {
+                            $tai->next();
+                            TokenArrayIteratorTool::skipWhiteSpaces($tai);
+                            $cur = $tai->current();
+                        }
+
+
+
                         if (TokenTool::match([
                             T_VARIABLE,
                         ], $cur)
