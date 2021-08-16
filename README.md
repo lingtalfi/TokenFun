@@ -1,6 +1,6 @@
 TokenFun
 =================
-2016-01-02 -> 2021-06-04
+2016-01-02 -> 2021-08-16
 
 
 
@@ -55,6 +55,10 @@ Dependencies
 History Log
 ------------------
 
+- 1.11.12 -- 2021-08-16
+
+    - fix MethodTokenFinder not detecting return hint of type array 
+  
 - 1.11.11 -- 2021-06-04
 
     - fix ClassPropertyTokenFinder not recognizing ? and | chars
